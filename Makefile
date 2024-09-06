@@ -36,22 +36,22 @@ test:
 .PHONEY: documentation ## Generate docs
 documentation:
 	echo "TODO"
-
 .PHONY: install  ## Install the requirements
 install:
 	@if [ ! -z "${CI}" ]; then \
-		uv pip install -e . --system; \
+		pip install -e . --system; \
 	else \
-		uv pip install -e .; \
+		pip install -e .; \
 	fi
 
 .PHONY: develop  ## Set up the development environment
 develop:
 	@if [ ! -z "${CI}" ]; then \
-		uv pip install -e ".[develop]" --system; \
+		pip install -e ".[develop]" --system; \
 	else \
-		uv pip install -e ".[develop]"; \
+		pip install -e ".[develop]"; \
 	fi
+
 
 .PHONY: env_encrypt ## Encrypts the current ./<app>/.env
 env_encrypt:
