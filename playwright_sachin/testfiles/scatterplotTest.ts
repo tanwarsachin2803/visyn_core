@@ -23,19 +23,19 @@ class ScatterPlotTest {
             await this.page.waitForTimeout(2000);
             await this.actions.clickElement(this.settings.facetsSelectionTab);
             await this.actions.clickElement(this.settings.getFacetListElement(facetType))
-            await this.scatterplot.plot.screenshot({ path: "test-results//" + "Scatter-Plot" + "//" + "facet" + "//" + listValue + ".png" });
+            await this.scatterplot.plot.screenshot({ path: "playwright_sachin//test-results//" + "Scatter-Plot" + "//" + "facet" + "//" + listValue + ".png" });
         }
         if (anotherColumn.match('color')) {
             await this.page.waitForTimeout(2000);
             await this.actions.clickElement(this.settings.colorTab);
             await this.actions.clickElement(this.settings.getFacetListElement(facetType))
-            await this.scatterplot.plot.screenshot({ path: "test-results//" + "Scatter-Plot" + "//" + "color" + "//" + listValue + ".png" });
+            await this.scatterplot.plot.screenshot({ path: "playwright_sachin//test-results//" + "Scatter-Plot" + "//" + "color" + "//" + listValue + ".png" });
         }
         if (anotherColumn.match('shape')) {
             await this.page.waitForTimeout(2000);
             await this.actions.clickElement(this.settings.shapeTab);
             await this.actions.clickElement(this.settings.getFacetListElement(facetType))
-            await this.scatterplot.plot.screenshot({ path: "test-results//" + "Scatter-Plot" + "//" + "shape" + "//" + listValue + ".png" });
+            await this.scatterplot.plot.screenshot({ path: "playwright_sachin//test-results//" + "Scatter-Plot" + "//" + "shape" + "//" + listValue + ".png" });
         }
     }
 
@@ -54,7 +54,7 @@ class ScatterPlotTest {
         await this.actions.clickElement(this.settings.facetsSelectionTab);
         await this.actions.clickElement(this.settings.getFacetListElement(facetType));
         const screenshot = await this.scatterplot.plot.screenshot();
-        await expect(screenshot).toMatchSnapshot("test-results//" + "Scatter-Plot" + "//" + "facet" + "//" + listValue + ".png", { 
+        await expect(screenshot).toMatchSnapshot("playwright_sachin//test-results//" + "Scatter-Plot" + "//" + "facet" + "//" + listValue + ".png", { 
             threshold: 0.2, // Adjust threshold based on your tolerance for differences
         });
 
@@ -66,7 +66,7 @@ class ScatterPlotTest {
         await this.actions.clickElement(this.settings.colorTab);
         await this.page.waitForTimeout(5000);
         //await this.actions.clickElement(this.settings.getFacetListElement(facetType));
-        await this.scatterplot.plot.screenshot({ path: "test-results//" + "Scatter-Plot" + "//" + "color" + "//" + listValue + ".png" });
+        await this.scatterplot.plot.screenshot({ path: "playwright_sachin//test-results//" + "Scatter-Plot" + "//" + "color" + "//" + listValue + ".png" });
 
     }
 
@@ -78,7 +78,7 @@ class ScatterPlotTest {
         await this.page.waitForTimeout(10000);
 
         //await this.actions.clickElement(this.settings.getFacetListElement(facetType));
-        await this.scatterplot.plot.screenshot({ path: "test-results//" + "Scatter-Plot" + "//" + "shape" + "//" + listValue + ".png" });
+        await this.scatterplot.plot.screenshot({ path: "playwright_sachin//test-results//" + "Scatter-Plot" + "//" + "shape" + "//" + listValue + ".png" });
 
     }
 
