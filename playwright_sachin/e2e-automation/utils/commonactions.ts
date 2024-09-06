@@ -2,28 +2,28 @@ import { Locator, expect } from '@playwright/test';
 
 class CommonActions {
 
-async clickElement(locator: Locator): Promise<void> {
-    try {
-        console.info(`Element selector: ${await locator.evaluate(el => el.outerHTML)}`);
-        // Ensure the element is visible and enabled before clicking
-        await locator.waitFor({ state: 'visible', timeout: 2000 });
-        await locator.waitFor({ state: 'attached', timeout: 2000 });  // Ensure it's in the DOM
-        // Perform the click action
-        await locator.click();
-    } catch (error) {
-        // Detailed error logging
-        console.error(`Error clicking element: ${error.message}`);
-        console.error(`Element selector: ${await locator.evaluate(el => el.outerHTML)}`);
-        throw error;  // Re-throw the error after logging it
+    async clickElement(locator: Locator): Promise<void> {
+        try {
+            console.info(`Element selector: ${await locator.evaluate(el => el.outerHTML)}`);
+            // Ensure the element is visible and enabled before clicking
+            await locator.waitFor({ state: 'visible', timeout: 2000 });
+            await locator.waitFor({ state: 'attached', timeout: 2000 });  // Ensure it's in the DOM
+            // Perform the click action
+            await locator.click();
+        } catch (error) {
+            // Detailed error logging
+            console.error(`Error clicking element: ${error.message}`);
+            console.error(`Element selector: ${await locator.evaluate(el => el.outerHTML)}`);
+            throw error;  // Re-throw the error after logging it
+        }
     }
-}
 
 
     async fillElement(locator: Locator, text: string): Promise<void> {
         try {
             // Ensure the element is visible and enabled before clicking
-        await locator.waitFor({ state: 'visible', timeout: 2000 });
-        await locator.waitFor({ state: 'attached', timeout: 2000 });  // Ensure it's in the DOM
+            await locator.waitFor({ state: 'visible', timeout: 2000 });
+            await locator.waitFor({ state: 'attached', timeout: 2000 });  // Ensure it's in the DOM
             await locator.fill(text);
         } catch (error) {
             console.error(`Error filling element with text "${text}": ${error.message}`);
@@ -82,7 +82,7 @@ async clickElement(locator: Locator): Promise<void> {
         try {
 
             const attributeValue = await locator.
-            getAttribute(attributeName);
+                getAttribute(attributeName);
             return attributeValue ?? ''; // Provide a fallback value
         } catch (error) {
             console.error(`Error getting attribute "${attributeName}": ${error.message}`);

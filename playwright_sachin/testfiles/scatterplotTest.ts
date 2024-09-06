@@ -16,6 +16,19 @@ class ScatterPlotTest {
         this.actions = new CommonActions();
     }
 
+    async takeSsOfTheVisualisationType(plotValue: number) {
+        console.log("in ss method")
+        const plotName = this.settings.getVisualisationTypeValue(plotValue);
+        console.log('plotname ', plotName)
+        const formattedPlotName = plotName.replace(' ', '-');  // Store the result of the replace operation    
+        // Click on the visualization type dropdown or element
+        await this.actions.clickElement(this.settings.visualizationType);
+        await this.actions.clickElement(this.settings.getVisualisationType_element(plotName));
+        await this.scatterplot.plot.screenshot({ path: "playwright_sachin//test-results//" + formattedPlotName + "//default-" + formattedPlotName + ".png" });
+    }
+
+
+
     async takeSsOfTheGraphs(plotName: string, anotherColumn: string, facetType: string | number) {
         const formattedPlotName = plotName.replace(' ', '-');  // Store the result of the replace operation
         const listValue = this.settings.getFacetListValue(facetType);
@@ -42,7 +55,7 @@ class ScatterPlotTest {
     async verifyTheGraphs(plotName: string) {
         const formattedPlotName = plotName.replace(' ', '-');  // Store the result of the replace operation
         const screenshot = await this.scatterplot.plot.screenshot();
-        expect(screenshot).toMatchSnapshot("test-results//" + formattedPlotName + "//default-" + formattedPlotName + ".png", {
+        expect(screenshot).toMatchSnapshot("playwright_sachin//test-results//" + formattedPlotName + "//default-" + formattedPlotName + ".png", {
             threshold: 0.2, // Adjust threshold based on your tolerance for differences
         });
     }
@@ -54,7 +67,7 @@ class ScatterPlotTest {
         await this.actions.clickElement(this.settings.facetsSelectionTab);
         await this.actions.clickElement(this.settings.getFacetListElement(facetType));
         const screenshot = await this.scatterplot.plot.screenshot();
-        await expect(screenshot).toMatchSnapshot("playwright_sachin//test-results//" + "Scatter-Plot" + "//" + "facet" + "//" + listValue + ".png", { 
+        await expect(screenshot).toMatchSnapshot("playwright_sachin//test-results//" + "Scatter-Plot" + "//" + "facet" + "//" + listValue + ".png", {
             threshold: 0.2, // Adjust threshold based on your tolerance for differences
         });
 

@@ -137,17 +137,17 @@ test('verifying the filter functionality with unselect all', async () => {
     let count = await barchartTests.verifySectionCount();
     await barchartTests.storeValuesForSorting();
     for (let i = 4; i < 10; i++) {
-           const sectionDataType = barchartTests.getSectionDataType(i);
-            if((await sectionDataType).match('categorical')){
-                await barchartTests.clickingFilterFunctionality(i);
-                await barchartTests.applyUnSelectAllFilter();    
+        const sectionDataType = barchartTests.getSectionDataType(i);
+        if ((await sectionDataType).match('categorical')) {
+            await barchartTests.clickingFilterFunctionality(i);
+            await barchartTests.applyUnSelectAllFilter();
             await sleep(3000);
             let rowValue;
             for (let j = 4; j < 14; j++) {
                 rowValue = await barchartTests.gettingRowTextValues(i, j);
                 listRowValues.push(rowValue);
             }
-            }    
+        }
     }
     await barchartTests.verifyingTheGroupFunctionality(listRowValues);
 });

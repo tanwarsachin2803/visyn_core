@@ -1,13 +1,13 @@
-import { Page, Locator ,ElementHandle} from "playwright-core";
+import { Page, Locator, ElementHandle } from "playwright-core";
 // Define a union type for valid ARIA roles
-type AriaRole =| 'alert'| 'alertdialog'| 'application'| 'article'| 'banner'| 'button'| 'checkbox'| 'dialog'| 'document'| 'heading'
-  | 'link'| 'listbox'| 'log'| 'main'| 'marquee'| 'menu'| 'menubar'| 'menuitem'| 'menuitemcheckbox'| 'menuitemradio'
-  | 'navigation'| 'note'| 'progressbar'| 'radio'| 'radiogroup'| 'region'| 'scrollbar'| 'separator'| 'slider'| 'spinbutton'| 'status'
-  | 'switch'| 'tab'| 'table'| 'term'| 'textbox'| 'timer'| 'tooltip'| 'tree'| 'treegrid'| 'treeitem';
+type AriaRole = | 'alert' | 'alertdialog' | 'application' | 'article' | 'banner' | 'button' | 'checkbox' | 'dialog' | 'document' | 'heading'
+    | 'link' | 'listbox' | 'log' | 'main' | 'marquee' | 'menu' | 'menubar' | 'menuitem' | 'menuitemcheckbox' | 'menuitemradio'
+    | 'navigation' | 'note' | 'progressbar' | 'radio' | 'radiogroup' | 'region' | 'scrollbar' | 'separator' | 'slider' | 'spinbutton' | 'status'
+    | 'switch' | 'tab' | 'table' | 'term' | 'textbox' | 'timer' | 'tooltip' | 'tree' | 'treegrid' | 'treeitem';
 
 
 export class ElementRetriever {
-    constructor(private page:Page){}
+    constructor(private page: Page) { }
 
     getElement(typeOfLocator: string, selector: string): Locator {
         switch (typeOfLocator) {
@@ -28,4 +28,3 @@ export class ElementRetriever {
         }
     }
 }
-   

@@ -274,7 +274,7 @@ class BarchartTests {
       const count = await (await (this.barchartPage.getCommonFunctionalityButton(sectionNumber))).count();
       if (count >= 3) {
         await this.page.waitForTimeout(5);
-        const locator= await this.barchartPage.getParticularFunctionalityButton(sectionNumber, 3);       
+        const locator = await this.barchartPage.getParticularFunctionalityButton(sectionNumber, 3);
         console.error(`Element selector: ${await locator.evaluate(el => el.outerHTML)}`);
         await this.actions.clickElement(await this.barchartPage.getParticularFunctionalityButton(sectionNumber, 3));
       }
@@ -360,18 +360,18 @@ class BarchartTests {
   async verifyingTheGroupFunctionality(listValues: (number | string)[]): Promise<void> {
     if (listValues.length === 0) {
       throw new Error("The list is empty.");
-  }
-  const firstValue = listValues[0];
-  const allSame = listValues.every(value => value === firstValue);
-  try {
+    }
+    const firstValue = listValues[0];
+    const allSame = listValues.every(value => value === firstValue);
+    try {
       expect(allSame).toBe(true);
       console.log("All values in the list are the same.");
-  } catch (error) {
+    } catch (error) {
       console.error("Not all values in the list are the same.");
       console.error("Error:", error.message);
       throw error;  // Re-throw the error to fail the test
+    }
   }
-}
 
 
 
@@ -383,14 +383,12 @@ class BarchartTests {
     await expect(this.actions.getValueUsingAttribute(this.settings.visualizationType, 'value')).toBe(plotName);
   }
 
-  async applyMissingValueFilter()
-  {
+  async applyMissingValueFilter() {
     await this.actions.clickElement(this.barchartPage.missingValueRowsCheckbox);
     this.takeActions('apply');
   }
 
-  async applyUnSelectAllFilter()
-  {
+  async applyUnSelectAllFilter() {
     await this.actions.clickElement(this.barchartPage.UnSelectAllCheckBox);
     this.takeActions('apply');
   }

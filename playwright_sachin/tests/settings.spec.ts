@@ -8,20 +8,26 @@ let browser: Browser;
 let context: BrowserContext;
 let page: Page;
 let barchartTests: BarchartTests;
-let settingspage:Settings;
-let settingTest:SettingTest;
+let settingspage: Settings;
+let settingTest: SettingTest;
 
 test.beforeEach(async ({ browser: b }) => {
     browser = b;
     context = await browser.newContext();
     page = await context.newPage();
     barchartTests = new BarchartTests(page);
-    settingspage=new Settings(page);
-    settingTest=new SettingTest(page);
+    settingspage = new Settings(page);
+    settingTest = new SettingTest(page);
     await barchartTests.setup();
     //listRowValues=[];
 });
 
-test('Verifying different type', async () => {
+test('Verifying different type of plots', async () => {
     await settingTest.selectingVisualisationType('Correlation plot');  // Added await
+});
+
+test('Verifying all the visualisation type of plots', async () => {
+    for (let i = 0; i < settingspage.visualizationTypeOptions.length; i++) {
+        await settingTest.selectingVisualisationType(i);
+    } // Added await
 });
